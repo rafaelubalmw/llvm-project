@@ -198,7 +198,8 @@ static bool isCompatibleInferredReturnShape(ArrayRef<int64_t> inferred,
   // If both interred and existing dimensions are static, they must be equal.
   auto isCompatible = [](int64_t inferredDim, int64_t existingDim) {
     return ShapedType::isDynamic(existingDim) ||
-           ShapedType::isDynamic(inferredDim) || inferredDim == existingDim;
+           ShapedType::isDynamic(inferredDim) ||
+           inferredDim == existingDim;
   };
   if (inferred.size() != existing.size())
     return false;
